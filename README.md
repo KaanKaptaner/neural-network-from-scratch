@@ -17,6 +17,8 @@ The network is trained on **XOR**, the classic toy problem that a single-layer (
 
 ## Architecture
 
+![Architecture](assets/architecture.png)
+
 ```
 Input (2)  --->  Hidden Layer (4 neurons, ReLU)  --->  Output Layer (1 neuron, Sigmoid)
 ```
@@ -51,11 +53,14 @@ neural-network-from-scratch/
 ├── requirements.txt
 ├── LICENSE
 ├── src/
-│   └── neural_network.py     # NeuralNetwork class + XOR training script
+│   ├── neural_network.py     # NeuralNetwork class + XOR training script
+│   └── visualize.py          # Architecture diagram + decision boundary plot
 ├── tests/
 │   └── test_network.py       # Unit tests (pytest)
 └── assets/
-    └── loss_plot.png         # Training loss curve
+    ├── loss_plot.png          # Training loss curve
+    ├── architecture.png       # Network architecture diagram
+    └── decision_boundary.png  # Learned XOR decision boundary
 ```
 
 ## Getting started
@@ -69,6 +74,12 @@ python src/neural_network.py
 
 Expected output: the loss drops from ~0.7 to near-zero over 5000 epochs, and the network correctly predicts all four XOR cases.
 
+Regenerate the architecture diagram and decision boundary plot:
+
+```bash
+python src/visualize.py
+```
+
 ## Running tests
 
 ```bash
@@ -76,6 +87,14 @@ pytest tests/ -v
 ```
 
 8 tests cover activation functions, output shapes/ranges, loss non-negativity, training convergence, and correct XOR classification.
+
+## Why XOR needs a hidden layer
+
+XOR is not linearly separable — no single straight line can divide the four points into their correct classes. This is exactly why a hidden layer is necessary: it lets the network bend the decision boundary.
+
+![Decision Boundary](assets/decision_boundary.png)
+
+The plot above shows the network's predicted probability across the entire input space after training. Notice the boundary is **two diagonal bands**, not a single straight line — something a plain linear model (no hidden layer) could never produce. The four training points (white circles = class 1, black squares = class 0) fall exactly where they should.
 
 ## Results
 
