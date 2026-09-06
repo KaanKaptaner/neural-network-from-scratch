@@ -66,7 +66,7 @@ neural-network-from-scratch/
 ## Getting started
 
 ```bash
-git clone https://github.com/<your-username>/neural-network-from-scratch.git
+git clone https://github.com/kaankaptaner/neural-network-from-scratch.git
 cd neural-network-from-scratch
 pip install -r requirements.txt
 python src/neural_network.py
